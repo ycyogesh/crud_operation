@@ -1,0 +1,12 @@
+-- create database crud;
+-- use crud;
+-- create table user_message(id int(11) primary key not null auto_increment,
+-- name varchar(255),
+-- email varchar(255),
+-- message varchar(255),
+-- is_deleted boolean default 0,
+-- created_by int(11) default 1,
+-- updated_by int(11),
+-- created_at datetime default current_timestamp,
+-- updated_at datetime);
+-- desc user_message;
