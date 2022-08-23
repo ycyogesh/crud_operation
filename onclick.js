@@ -1,5 +1,6 @@
 var express = require("express")
 var mysql      = require('mysql');
+var cors = require("cors")
 var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'nodejs',
@@ -16,7 +17,7 @@ connection.connect(function(err) {
   console.log('connected as id ' + connection.threadId);
 });
 var app = express()
-
+app.use(cors());
 app.get("/sql",(req,res)=>{
     let sql = 'select * from user_message';
     connection.query(sql,(err,result)=>{
@@ -30,6 +31,6 @@ app.get("/sql",(req,res)=>{
 })
 
 
-app.listen(3000,()=>{
+app.listen(3002,()=>{
     console.log("App Running");
 })

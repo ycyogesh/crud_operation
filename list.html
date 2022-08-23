@@ -14,30 +14,38 @@
 <body>
     <div class="container">
         <div>
-            <ul style="list-style: none;">
-                <li>
-                    <div class="" id="name">
-                        Name : 
-                    </div>
-                </li><br>
-                <li>
-                    <div class="" id="email">
-                        Email : 
-                    </div>
-                </li><br>
-                <li>
-                    <div class="" id="message">
-                        Message : 
-                    </div>
-                </li><br>
-                <li>
-                    <div class="" id="action">
-                        <span><a href="#"></a><i class="fa-solid fa-pen-to-square"></i></span> &nbsp;
-                        <span><a href="#"></a><i class="fa-solid fa-trash-can"></i></span> 
-                    </div>
-                </li>
-            </ul>
+            <table id="myDataTable">
+                <tr>
+                <th>Name</th> 
+                <th>Email</th> 
+                <th>Message</th> 
+                <th>Action</th>
+                </tr>
+                <tbody id="myDataTableBody">
+
+                </tbody>        
+            </table>
         </div>
     </div>
+    <script>
+        function myFunction(){
+            fetch("http://localhost:3002/sql").then((res)=>{
+            res.json().then(data=>{
+
+                console.log(data);
+                console.log(data.result);
+                result = data.result
+                html = ""
+                for( i= 0; i<result.length; i++){
+                    html += "<tr><td>" + result[i].name + "</td><td>" + result[i].email + "</td><td>" + result[i].message + "</td></tr>"
+
+                }
+              document.getElementById("myDataTableBody").innerHTML = html 
+            })
+          })
+        }
+
+        myFunction()
+    </script>
 </body>
 </html>
