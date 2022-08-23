@@ -1,6 +1,13 @@
 var express = require("express")
 var mysql      = require('mysql');
 var cors = require("cors")
+var app = express()
+
+
+app.use(cors());
+app.use(express.json());
+
+
 var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'nodejs',
@@ -16,10 +23,12 @@ connection.connect(function(err) {
  
   console.log('connected as id ' + connection.threadId);
 });
-var app = express()
-app.use(cors());
-app.get("/sql",(req,res)=>{
+
+
+app.get("/sq",(req,res)=>{
+
     let sql = 'select * from user_message';
+
     connection.query(sql,(err,result)=>{
         if(err){
             res.send("Error")
@@ -32,13 +41,15 @@ app.get("/sql",(req,res)=>{
 
 
 app.post("/sql",(req,res)=>{
-    let data = req.body
-    let sql = 'insert into table userMessage(name, email, message) values(?,?,?)';
-    connection.query(sql,[data.name, data.email, data.message],(err,result)=>{
+    let data = req.body 
+    console.log('sssssssss', req.body);
+    let sql = 'insert into user_message(name, email, message) values(?,?,?)';
+    connection.query(sql,[data.name, data.email, data.msg],(err,result)=>{
         if(err){
             res.send("Error")
         }
-        res.json({result})
+        console.log('!!!!!!!!!!', result)
+        res.send({result})
     });
     
 

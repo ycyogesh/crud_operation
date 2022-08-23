@@ -30,7 +30,7 @@
     <div class="container">
       <form action="">
         Name :
-        <input type="text" name="username" id="name" value="" /><br /><br />
+        <input type="text" name="username" id="username" value="" /><br /><br />
         Mail :
         <input type="email" name="mail" id="email" value="" /><br /><br />
         Message :
@@ -42,23 +42,28 @@
 
     <script>
       function myFunction(){
-          let name = document.getElementById("name").value;
+          let name = document.getElementById("username").value;
           let mail = document.getElementById("email").value;
           let msg = document.getElementById("message").value;
-          console.log(name,mail,msg);
           let obj = {
             "name": name,
             "mail": mail,
             "msg": msg
           }
+          console.log('!!!!!!!!!!!!!', obj)
 
-          fetch("http://localhost:3002/",{
-            method: POST,
-            body: JSON.stringify(obj)
+         fetch("http://localhost:3002/sql",{
+            method:'POST',
+            //mode : 'cors',
+            body: JSON.stringify(obj),
+            headers: {
+              "Content-Type" : "application/json"
+            }
             
-          }).then((res) => {
-              res.json().then((data) => console.log(data))
           })
+          // .then((res) => {
+          //     res.json().then((data) => console.log(data))
+          // })
       }
     </script>
   </body>
