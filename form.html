@@ -50,20 +50,18 @@
             "mail": mail,
             "msg": msg
           }
-          console.log('!!!!!!!!!!!!!', obj)
+          // console.log('!!!!!!!!!!!!!', obj)
 
          fetch("http://localhost:3002/sql",{
             method:'POST',
-            //mode : 'cors',
             body: JSON.stringify(obj),
             headers: {
               "Content-Type" : "application/json"
             }
-            
           })
-          // .then((res) => {
-          //     res.json().then((data) => console.log(data))
-          // })
+          .then((res) => {
+              res.json().then((data) => console.log(data))
+          })
       }
     </script>
   </body>
