@@ -43,7 +43,7 @@ app.post("/sql", (req, res) => {
       res.send("Error");
     }
     console.log("!!!!!!!!!!", result);
-    res.send({ result });
+    res.json({ result });
   });
 });
 
