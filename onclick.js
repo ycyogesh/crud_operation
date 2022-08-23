@@ -31,6 +31,19 @@ app.get("/sql",(req,res)=>{
 })
 
 
+app.post("/sql",(req,res)=>{
+    let data = req.body
+    let sql = 'insert into table userMessage(name, email, message) values(?,?,?)';
+    connection.query(sql,[data.name, data.email, data.message],(err,result)=>{
+        if(err){
+            res.send("Error")
+        }
+        res.json({result})
+    });
+    
+
+})
+
 app.listen(3002,()=>{
     console.log("App Running");
 })

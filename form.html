@@ -46,7 +46,19 @@
           let mail = document.getElementById("email").value;
           let msg = document.getElementById("message").value;
           console.log(name,mail,msg);
-          
+          let obj = {
+            "name": name,
+            "mail": mail,
+            "msg": msg
+          }
+
+          fetch("http://localhost:3002/",{
+            method: POST,
+            body: JSON.stringify(obj)
+            
+          }).then((res) => {
+              res.json().then((data) => console.log(data))
+          })
       }
     </script>
   </body>
