@@ -10,3 +10,8 @@
 -- created_at datetime default current_timestamp,
 -- updated_at datetime);
 -- desc user_message;
+-- insert into user_message(id,name,email,message)values(1,"deva","deva@gamil.com","Hiiii I'm Deva");
+-- insert into user_message(name,email,message)values("arun","arun@gamil.com","Hiiii I'm Arun");
+-- insert into user_message(name,email,message)values("yc","yc@gamil.com","Hiiii I'm YC");
+-- insert into user_message(name,email,message)values("stalin","stalin@gamil.com","Hiiii I'm Stalin");
+-- select * from user_message;
