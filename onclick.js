@@ -25,7 +25,7 @@ connection.connect(function(err) {
 });
 
 
-app.get("/sq",(req,res)=>{
+app.get("/sql",(req,res)=>{
 
     let sql = 'select * from user_message';
 
@@ -42,6 +42,7 @@ app.get("/sq",(req,res)=>{
 
 app.post("/sql",(req,res)=>{
     let data = req.body 
+    console.log(req);
     console.log('sssssssss', req.body);
     let sql = 'insert into user_message(name, email, message) values(?,?,?)';
     connection.query(sql,[data.name, data.email, data.msg],(err,result)=>{
@@ -51,8 +52,6 @@ app.post("/sql",(req,res)=>{
         console.log('!!!!!!!!!!', result)
         res.send({result})
     });
-    
-
 })
 
 app.listen(3002,()=>{
