@@ -47,6 +47,17 @@ app.post("/sql", (req, res) => {
   });
 });
 
+
+app.get("/getRecordById",(req,res)=>{
+  console.log(req);
+})
+
+
+// app.put("/sql",(req,res)=>{
+//   console.log(req);
+// })
+
+
 app.listen(3002, () => {
   console.log("App Running");
 });

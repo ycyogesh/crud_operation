@@ -33,7 +33,7 @@
         function myFunction(){
             fetch("http://localhost:3002/sql").then((res)=>{
             res.json().then(data=>{
-                "</td><td>"
+                
                 console.log(data);
                 console.log(data.result);
                 result = data.result
@@ -49,10 +49,15 @@
           })
         }
 
-        myFunction()
+        myFunction();
 
         function editFun(){
-            
+            console.log("Hiii");
+        }
+
+
+        function deleteFun(){
+            console.log("Deleted");
         }
     </script>
 </body>
