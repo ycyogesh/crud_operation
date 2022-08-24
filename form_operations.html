@@ -99,7 +99,20 @@
             res.json().then((data) => console.log(data));
             });
         } else {
-            obj["id"] = document.getElementById("id").value
+            obj["id"] = document.getElementById("id").value;
+            console.log("!!!!!!!!",obj.id);
+            fetch("http://localhost:3003/putData", {
+            method: "PUT",
+            body: JSON.stringify(obj),
+            headers: {
+                "Content-Type": "application/json",
+            },
+            }).then((res) => {
+            res.json().then((data) => {
+                console.log("data-------->",data)
+            myFunction()
+            });
+            });
             
         }
       }
