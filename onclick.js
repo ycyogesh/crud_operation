@@ -49,7 +49,18 @@ app.post("/sql", (req, res) => {
 
 
 app.get("/getRecordById",(req,res)=>{
-  console.log(req);
+  console.log("----------->",req.query.id);
+
+
+  let sql = "select * from user_message where id = "+req.query.id;
+
+  connection.query(sql, (err, result) => {
+    if (err) {
+      res.send("Error");
+    }
+    res.json({ result });
+  });
+
 })
 
 
@@ -58,6 +69,6 @@ app.get("/getRecordById",(req,res)=>{
 // })
 
 
-app.listen(3002, () => {
+app.listen(3003, () => {
   console.log("App Running");
 });
