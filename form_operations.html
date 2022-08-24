@@ -99,7 +99,9 @@
             res.json().then((data) => console.log(data));
             });
         } else {
+            isPost = true
             obj["id"] = document.getElementById("id").value;
+
             console.log("!!!!!!!!",obj.id);
             fetch("http://localhost:3003/putData", {
             method: "PUT",
@@ -110,6 +112,13 @@
             }).then((res) => {
             res.json().then((data) => {
                 console.log("data-------->",data)
+            
+            
+            document.getElementById("username").value = " "
+            document.getElementById("email").value = " "
+            document.getElementById("message").value = " "
+
+
             myFunction()
             });
             });
