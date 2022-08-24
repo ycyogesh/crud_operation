@@ -38,7 +38,7 @@ app.post("/sql", (req, res) => {
   console.log(req);
   console.log("sssssssss", req.body);
   let sql = "insert into user_message(name, email, message) values(?,?,?)";
-  connection.query(sql, [data.name, data.email, data.msg], (err, result) => {
+  connection.query(sql, [data.name, data.mail, data.msg], (err, result) => {
     if (err) {
       res.send("Error");
     }
