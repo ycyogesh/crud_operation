@@ -64,9 +64,18 @@ app.get("/getRecordById",(req,res)=>{
 })
 
 
-// app.put("/sql",(req,res)=>{
-//   console.log(req);
-// })
+app.put("/sql",(req,res)=>{
+  console.log(req);
+
+  let sql = "update user_message set name=?,email=?,message=? where id = "+req.query.id;
+
+  connection.query(sql, (err, result) => {
+    if (err) {
+      res.send("Error");
+    }
+    res.json({ result });
+  });
+})
 
 
 app.listen(3003, () => {
