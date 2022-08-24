@@ -49,6 +49,8 @@
       <form action="">
         Name :
         <input type="text" name="username" id="username" value="" /><br /><br />
+        <input type="hidden" name="id" id="id" value="" />
+
         Mail :
         <input type="email" name="mail" id="email" value="" /><br /><br />
         Message :
@@ -73,6 +75,7 @@
     </div>
 
     <script>
+        var isPost = true
       function myFunPost() {
         let name = document.getElementById("username").value;
         let mail = document.getElementById("email").value;
@@ -84,15 +87,21 @@
         };
         // console.log('!!!!!!!!!!!!!', obj)
 
-        fetch("http://localhost:3003/sql", {
-          method: "POST",
-          body: JSON.stringify(obj),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }).then((res) => {
-          res.json().then((data) => console.log(data));
-        });
+        if(isPost) {
+
+            fetch("http://localhost:3003/sql", {
+            method: "POST",
+            body: JSON.stringify(obj),
+            headers: {
+                "Content-Type": "application/json",
+            },
+            }).then((res) => {
+            res.json().then((data) => console.log(data));
+            });
+        } else {
+            obj["id"] = document.getElementById("id").value
+            
+        }
       }
 
       function myFunction() {
@@ -127,10 +136,13 @@
           });
         });
       }
-
       myFunction();
 
+
+
       function editFun(id) {
+        document.getElementById("id").value = id
+        isPost = false
         console.log("---", id);
         fetch("http://localhost:3003/getRecordById?id=" + id).then((res) => {
           res.json().then((data) => {
@@ -144,8 +156,10 @@
       }
 
 
+
+
       function deleteFun(id){
-        
+
       }
     </script>
   </body>
